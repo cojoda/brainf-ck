@@ -2,6 +2,8 @@ class Brainfuck:
 
     def __init__(self, code, stdin=''):
         self.code = code
+        if type(self.code) is str:
+            self.code = list(self.code)
         self.code_ptr = 0
         self.data = [0]
         self.data_ptr = 0
@@ -11,6 +13,7 @@ class Brainfuck:
         self.stdin_ptr = 0
         self.stdout = []
         self.stdout_ptr = 0
+        self.depth = 0
 
     # finds index of matching bracket ']'
     def match(self):
@@ -58,8 +61,13 @@ class Brainfuck:
                 frame.stdout_ptr = self.stdout_ptr
                 while self.data[self.data_ptr] != 0:
                     frame.code_ptr = 0
+                    frame.depth = self.depth + 1
                     frame.run()
                     self.data_ptr = frame.data_ptr
                     self.stdout_ptr = frame.stdout_ptr
                 self.code_ptr = code_end
             self.code_ptr += 1
+        # if depth = 0 convert stdout to ascii for final output
+        if self.depth == 0:
+            self.stdout = ''.join(self.stdout)
+            
