@@ -6,6 +6,8 @@ class Brainfuck:
         self.data = [0]
         self.data_ptr = 0
         self.stdin = stdin
+        if type(self.stdin) is str:
+            self.stdin = list(self.stdin)
         self.stdin_ptr = 0
         self.stdout = []
         self.stdout_ptr = 0
