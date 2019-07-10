@@ -61,29 +61,3 @@ class Brainfuck:
                     self.stdout_ptr = frame.stdout_ptr
                 self.code_ptr = code_end
             self.code_ptr += 1
-
-# stdin = ''
-
-# calculates cell width in bits
-# code = '++++++++[>++++++++<-]>[<++++>-]+<[>-<[>++++<-]>[<++++++++>-]<[>++++++++<-]+>[>++++++++++[>+++++<-]>+.-.[-]<<[-]<->] <[>>+++++++[>+++++++<-]>.+++++.[-]<<<-]] >[>++++++++[>+++++++<-]>.[-]<<-]<+++++++++++[>+++>+++++++++>+++++++++>+<<<<-]>-.>-.+++++++.+++++++++++.<.>>.++.+++++++..<-.>>-[[-]<]'
-
-# calculates 2^10, does not print to stdout
-# code = '+>>++++++++++[<<[>++<-]>[<+>-]>-]<<'
-
-# adds 2 numbers from stdin and pushes to stdout while auto-converting ascii
-# code = ',>++++++++[<------>-],>++++++++[<------>-]<[<+>-]++++++++[<++++++>-]<.'
-# stdin = '23'
-
-# Outputs 'Hello World!' to stdout
-# code = '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.'
-
-# data_ptr out of bounds test
-# code = '<'
-
-# stdin out of bounds test
-# code = ','
-
-# test = Brainfuck(code, stdin)
-# test.run()
-# print(test.stdout)
-# print(test.data[0])
