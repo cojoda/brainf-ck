@@ -36,11 +36,11 @@ class Brainfuck:
                 self.data_ptr -= 1
                 if self.data_ptr < 0:
                     print('data_ptr out of bounds')
-                    return -1
+                    exit(-1)
             elif instruction is ',':
                 if self.stdin_ptr >= len(self.stdin):
                     print('stdin_ptr out of bounds')
-                    return -1
+                    exit(-1)
                 self.data[self.data_ptr] = ord(self.stdin[self.stdin_ptr])
                 self.stdin_ptr += 1
             elif instruction is '.':
@@ -62,7 +62,7 @@ class Brainfuck:
                 self.code_ptr = code_end
             self.code_ptr += 1
 
-stdin = ''
+# stdin = ''
 
 # calculates cell width in bits
 # code = '++++++++[>++++++++<-]>[<++++>-]+<[>-<[>++++<-]>[<++++++++>-]<[>++++++++<-]+>[>++++++++++[>+++++<-]>+.-.[-]<<[-]<->] <[>>+++++++[>+++++++<-]>.+++++.[-]<<<-]] >[>++++++++[>+++++++<-]>.[-]<<-]<+++++++++++[>+++>+++++++++>+++++++++>+<<<<-]>-.>-.+++++++.+++++++++++.<.>>.++.+++++++..<-.>>-[[-]<]'
@@ -71,13 +71,19 @@ stdin = ''
 # code = '+>>++++++++++[<<[>++<-]>[<+>-]>-]<<'
 
 # adds 2 numbers from stdin and pushes to stdout while auto-converting ascii
-code = ',>++++++++[<------>-],>++++++++[<------>-]<[<+>-]++++++++[<++++++>-]<.'
+# code = ',>++++++++[<------>-],>++++++++[<------>-]<[<+>-]++++++++[<++++++>-]<.'
 # stdin = '23'
 
 # Outputs 'Hello World!' to stdout
 # code = '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.'
 
-test = Brainfuck(code, stdin)
-test.run()
-print(test.stdout)
+# data_ptr out of bounds test
+# code = '<'
+
+# stdin out of bounds test
+# code = ','
+
+# test = Brainfuck(code, stdin)
+# test.run()
+# print(test.stdout)
 # print(test.data[0])
