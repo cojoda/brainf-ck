@@ -9,9 +9,8 @@ class Brainfuck:
         self.stdin_ptr = 0
         self.stdout = []
         self.stdout_ptr = 0
-        self.stderr = ''
-        self.stderr_ptr = 0
 
+    # finds index of matching bracket ']'
     def match(self):
         left_count = 1
         for position in range(self.code_ptr + 1, len(self.code)):
@@ -63,8 +62,22 @@ class Brainfuck:
                 self.code_ptr = code_end
             self.code_ptr += 1
 
-code = '++++++++[>++++++++<-]>[<++++>-]+<[>-<[>++++<-]>[<++++++++>-]<[>++++++++<-]+>[>++++++++++[>+++++<-]>+.-.[-]<<[-]<->] <[>>+++++++[>+++++++<-]>.+++++.[-]<<<-]] >[>++++++++[>+++++++<-]>.[-]<<-]<+++++++++++[>+++>+++++++++>+++++++++>+<<<<-]>-.>-.+++++++.+++++++++++.<.>>.++.+++++++..<-.>>-[[-]<]'
-# code = '+>>++++++++++[<<[>++<-]>[<+>-]>-]<<.'
-test = Brainfuck(code)
+stdin = ''
+
+# calculates cell width in bits
+# code = '++++++++[>++++++++<-]>[<++++>-]+<[>-<[>++++<-]>[<++++++++>-]<[>++++++++<-]+>[>++++++++++[>+++++<-]>+.-.[-]<<[-]<->] <[>>+++++++[>+++++++<-]>.+++++.[-]<<<-]] >[>++++++++[>+++++++<-]>.[-]<<-]<+++++++++++[>+++>+++++++++>+++++++++>+<<<<-]>-.>-.+++++++.+++++++++++.<.>>.++.+++++++..<-.>>-[[-]<]'
+
+# calculates 2^10, does not print to stdout
+# code = '+>>++++++++++[<<[>++<-]>[<+>-]>-]<<'
+
+# adds 2 numbers from stdin and pushes to stdout while auto-converting ascii
+code = ',>++++++++[<------>-],>++++++++[<------>-]<[<+>-]++++++++[<++++++>-]<.'
+# stdin = '23'
+
+# Outputs 'Hello World!' to stdout
+# code = '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.'
+
+test = Brainfuck(code, stdin)
 test.run()
 print(test.stdout)
+# print(test.data[0])
