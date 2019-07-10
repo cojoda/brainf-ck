@@ -48,7 +48,7 @@ class Brainfuck:
                 self.data[self.data_ptr] = ord(self.stdin[self.stdin_ptr])
                 self.stdin_ptr += 1
             elif instruction is '.':
-                self.stdout.append(chr(self.data[self.data_ptr]))
+                self.stdout.append(self.data[self.data_ptr])
             elif instruction is '[':
                 code_start = self.code_ptr + 1
                 code_end = self.match()
@@ -64,7 +64,9 @@ class Brainfuck:
                     self.data_ptr = frame.data_ptr
                 self.code_ptr = code_end
             self.code_ptr += 1
-        # if depth = 0 convert stdout to ascii for final output
+        # if frame stack depth = 0 (at head) convert to ascii string with overflow support
         if self.depth == 0:
+            for stdout_ptr in range(len(self.stdout)):
+                self.stdout[stdout_ptr] = chr(self.stdout[stdout_ptr] % 255)
             self.stdout = ''.join(self.stdout)
             
