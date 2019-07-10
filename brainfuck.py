@@ -12,7 +12,6 @@ class Brainfuck:
             self.stdin = list(self.stdin)
         self.stdin_ptr = 0
         self.stdout = []
-        self.stdout_ptr = 0
         self.depth = 0
 
     # finds index of matching bracket ']'
@@ -58,13 +57,11 @@ class Brainfuck:
                 frame.data_ptr = self.data_ptr
                 frame.stdin_ptr = self.stdin_ptr
                 frame.stdout = self.stdout
-                frame.stdout_ptr = self.stdout_ptr
                 while self.data[self.data_ptr] != 0:
                     frame.code_ptr = 0
                     frame.depth = self.depth + 1
                     frame.run()
                     self.data_ptr = frame.data_ptr
-                    self.stdout_ptr = frame.stdout_ptr
                 self.code_ptr = code_end
             self.code_ptr += 1
         # if depth = 0 convert stdout to ascii for final output
