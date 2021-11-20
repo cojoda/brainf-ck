@@ -1,5 +1,5 @@
-class Brainfuck:
-    """Return the results of Brainfuck code."""
+class Brainf_ck:
+    """Return the results of Brainf*ck code."""
 
     def __init__(self, code, stdin=''):
         self.code = code
