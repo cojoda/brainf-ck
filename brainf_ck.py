@@ -57,7 +57,7 @@ class Brainf_ck:
         """Return the results of code inside two matching brackets."""
         code_start = self.code_ptr + 1
         code_end = self.__match_bracket()
-        frame = Brainfuck(self.code[code_start:code_end], self.stdin)
+        frame = Brainf_ck(self.code[code_start:code_end], self.stdin)
         frame.data = self.data
         frame.data_ptr = self.data_ptr
         frame.stdin_ptr = self.stdin_ptr
