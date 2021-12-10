@@ -3,13 +3,13 @@ class Brainf_ck:
 
     def __init__(self, code, stdin=''):
         self.code = code
-        if type(self.code) is str:
+        if type(self.code) == str:
             self.code = list(self.code)
         self.code_ptr = 0
         self.data = [0]
         self.data_ptr = 0
         self.stdin = stdin
-        if type(self.stdin) is str:
+        if type(self.stdin) == str:
             self.stdin = list(self.stdin)
         self.stdin_ptr = 0
         self.stdout = []
@@ -46,11 +46,11 @@ class Brainf_ck:
         """Return matching end bracket."""
         left_count = 1
         for position in range(self.code_ptr + 1, len(self.code)):
-            if self.code[position] is '[':
+            if self.code[position] == '[':
                 left_count += 1
-            elif self.code[position] is ']':
+            elif self.code[position] == ']':
                 left_count -= 1
-                if left_count is 0:
+                if left_count == 0:
                     return position
 
     def __bracket(self):
@@ -77,19 +77,19 @@ class Brainf_ck:
     def run(self):
         while self.code_ptr < len(self.code):
             instruction = self.code[self.code_ptr]
-            if instruction is '+':
+            if instruction == '+':
                 self.__add()
-            elif instruction is '-':
+            elif instruction == '-':
                 self.__sub()
-            elif instruction is '>':
+            elif instruction == '>':
                 self.__inc_ptr()
-            elif instruction is '<':
+            elif instruction == '<':
                 self.__dec_ptr()
-            elif instruction is ',':
+            elif instruction == ',':
                 self.__read_stdin()
-            elif instruction is '.':
+            elif instruction == '.':
                 self.__write_stdout()
-            elif instruction is '[':
+            elif instruction == '[':
                 self.__bracket()
             self.code_ptr += 1
         if self.depth == 0:
