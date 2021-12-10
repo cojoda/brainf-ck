@@ -73,6 +73,9 @@ class Brainf_ck:
         for stdout_ptr in range(len(self.stdout)):
             self.stdout[stdout_ptr] = chr(self.stdout[stdout_ptr] % 255)
         self.stdout = ''.join(self.stdout)
+        
+    def __str__(self):
+        return self.stdout
 
     def run(self):
         while self.code_ptr < len(self.code):
