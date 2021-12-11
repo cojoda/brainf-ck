@@ -1,19 +1,18 @@
-import data
-
+from data import Data
 
 class Brainf_ck:
     """Return the results of Brainf*ck code."""
 
     def __init__(self, code, stdin=''):
 
-        self.code = data.Data(code)
+        self.code = Data(code)
         self.code.ptr = 0
 
-        self.data = data.Data([0])
+        self.data = Data([0])
         self.data.ptr = 0
 
-        self.stdin = data.Data()
-        self.stdout = data.Data()
+        self.stdin = Data()
+        self.stdout = Data()
 
         self.depth = 0
     
@@ -80,14 +79,12 @@ class Brainf_ck:
         self.code.ptr = code_end
 
 
-    def __to_ascii(self):
-        for i in range(len(self.stdout)):
-            self.stdout[i] = chr(self.stdout[i] % 255)
-        self.stdout = ''.join(self.stdout)
-        
-
     def __str__(self):
-        return self.stdout
+        """Convert stdout to ascii character string"""
+        txt = []
+        for i in range(len(self.stdout)):
+            txt.append(chr(self.stdout[i] % 255))
+        return ''.join(txt)
 
 
     def run(self):
@@ -108,6 +105,4 @@ class Brainf_ck:
             elif instruction == '[':
                 self.__bracket()
             self.code.ptr += 1
-        if self.depth == 0:
-            # at head of stack
-            self.__to_ascii()
+
