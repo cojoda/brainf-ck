@@ -6,11 +6,7 @@ class Brainf_ck:
     def __init__(self, code, stdin=''):
 
         self.code = Data(code)
-        self.code.ptr = 0
-
         self.data = Data([0])
-        self.data.ptr = 0
-
         self.stdin = Data()
         self.stdout = Data()
 
@@ -105,4 +101,3 @@ class Brainf_ck:
             elif instruction == '[':
                 self.__bracket()
             self.code.ptr += 1
-
